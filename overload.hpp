@@ -9,15 +9,11 @@ public:
     complex_number(): a(0), b(0) {}
 
     explicit complex_number(I r): a(r), b(0) {
-        std::cout << "converting constructor called (real->complex)" << std::endl;
-    }
-
-    explicit complex_number(I i, bool isIm): a(0), b(i) {
-        std::cout << "converting constructor called (pure imaginary->complex)" << std::endl;
+        std::cout << "(converting constructor called (real->complex))" << std::endl;
     }
 
     complex_number(I r, I c): a(r), b(c) {
-        std::cout << "building complex number" << std::endl;
+        std::cout << "(building complex number)" << std::endl;
     }
 
     I rl(void) const{
@@ -47,8 +43,7 @@ public:
     }
 
     complex_number& operator+=(const I& other) {
-        complex_number add(other);
-        a += add;
+        a += other;
         return *this;
 	}
 
@@ -60,7 +55,7 @@ public:
 
     //
 
-    ccomplex_number& operator*=(const complex_number& other){
+    complex_number& operator*=(const complex_number& other){
         I c = a;
         I d = b;
         I e = other.a;
@@ -104,7 +99,7 @@ complex_number<I> Im(const complex_number<I>& r){
     return complex_number<I>(0, r.im());
 }
 
-//
+// 
 
 template<typename I>
 complex_number<I> operator+(const I& i, const complex_number<I>& r)
